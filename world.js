@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded",function(){
     let result = document.getElementById("result");
     let button = document.getElementById("lookup");
     let named = document.getElementById("country");
+    let city = document.getElementById("cities");
     const country = new XMLHttpRequest();
 
     function listcountries(){
@@ -22,6 +23,14 @@ document.addEventListener("DOMContentLoaded",function(){
         country.onreadystatechange = listcountries;
         country.open("GET","world.php?country="+nameText);
         country.send();
-})
+    })
+
+    city.addEventListener("click",function(){
+        let nameText = named.value;
+        nameText = nameText.trim();
+        country.onreadystatechange = listcountries;
+        country.open("GET","world.php?country="+nameText+"&lookup=cities");
+        country.send();
+    })
 
 })
